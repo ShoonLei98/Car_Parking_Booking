@@ -7,6 +7,12 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        @if (Session::has('createSuccess'))
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                {{ Session::get('createSuccess') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
 
         @if (Session::has('updateSuccess'))
         <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
@@ -25,9 +31,25 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">
-                    <button class="btn btn-sm btn-outline-dark">User List</button>
+                <h3 class="card-title mt-1">
+                    <a href="{{ route('customer#add') }}"><button class="btn btn-sm btn-outline-dark"> Add User List</button></a>
                 </h3>
+
+                <div class="card-tools mt-2">
+                    <form action="{{ route('customer#search') }}" method="get">
+                        @csrf
+                        <div class="input-group input-group-sm bg-gray me-5" style="width: 200px;">
+                            <input type="text" name="searchCustomer" class="form-control float-right" placeholder="Enter Name or Email" value="{{ Session::get('SEARCH_CUSTOMER') }}">
+
+                            <div class="input-group-append">
+                              <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                              </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -37,7 +59,6 @@
                       <th>ID</th>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Role</th>
                       <th>Phone</th>
                       <th>Address</th>
                       <th></th>
@@ -45,21 +66,23 @@
                   </thead>
                   <tbody>
 
-                  @foreach ($user as $item)
+                  @foreach ($customer as $item)
 
                   <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->customer_id }}</td>
+                    <td>{{ $item->customer_name }}</td>
                     <td>{{ $item->email }}</td>
-                    <td>{{ $item->role }}</td>
                     <td>{{ $item->phone }}</td>
                     <td>{{ $item->address }}</td>
 
                     <td>
-                        <a href="{{ route('user#edit', $item->id) }}">
+                        <a href="">
+                            <button class="btn btn-sm bg-warning text-white">Booking</button>
+                        </a>
+                        <a href="{{ route('customer#edit', $item->customer_id) }}">
                             <button class="btn btn-sm bg-primary text-white">Edit</button>
                         </a>
-                        <a href="{{ route('user#delete', $item->id) }}">
+                        <a href="{{ route('customer#delete', $item->customer_id) }}">
                             <button class="btn btn-sm bg-danger text-white">Delete</button>
                         </a>
                     </td>

@@ -59,7 +59,7 @@
           </li>
 
          <li class="nav-item">
-            <a href="Customer" class="nav-link">
+            <a href="{{ route('customer#list') }}" class="nav-link">
             <i class="fas fa-users"></i>
               <p>
                 Customer

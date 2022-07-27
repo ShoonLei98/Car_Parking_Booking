@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AdditionalServicesController;
 
 /*
@@ -50,4 +51,14 @@ Route::prefix('services')->group(function () {
     Route::get('editService/{id}', [AdditionalServicesController::class, 'editService'])->name('services#edit');
     Route::post('updateService', [AdditionalServicesController::class, 'updateService'])->name('services#update');
     Route::get('deleteService/{id}', [AdditionalServicesController::class, 'deleteService'])->name('service#delete');
+});
+
+Route::prefix('customer')->group(function () {
+    Route::get('customerList', [CustomerController::class, 'customerList'])->name('customer#list');
+    Route::get('addCustomer', [CustomerController::class, 'addCustomer'])->name('customer#add');
+    Route::post('createCustomer', [CustomerController::class, 'createCustomer'])->name('customer#create');
+    Route::get('editCustomer/{id}', [CustomerController::class, 'editCustomer'])->name('customer#edit');
+    Route::post('updateCustomer', [CustomerController::class, 'updateCustomer'])->name('customer#update');
+    Route::get('deleteCustomer/{id}', [CustomerController::class, 'deleteCustomer'])->name('customer#delete');
+    Route::get('searchCustomer', [CustomerController::class, 'searchCustomer'])->name('customer#search');
 });

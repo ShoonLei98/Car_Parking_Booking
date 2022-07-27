@@ -35,8 +35,12 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/',[AdminController::class, 'index'])->name('admin#index');
 });
 
-Route::group(['prefix'=>'user'],function(){
+
+Route::prefix('user')->group(function () {
     Route::get('userList', [UserController::class, 'userList'])->name('user#list');
+    Route::get('editUser/{id}', [UserController::class, 'editUser'])->name('user#edit');
+    Route::post('updateUser', [UserController::class, 'updateUser'])->name('user#update');
+    Route::get('deleteUser/{id}', [UserController::class, 'deleteUser'])->name('user#delete');
 });
 
 Route::prefix('services')->group(function () {

@@ -7,13 +7,20 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-{{--
+
+        @if (Session::has('updateSuccess'))
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{ Session::get('updateSuccess') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+
         @if (Session::has('deleteSuccess'))
         <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
             {{ Session::get('deleteSuccess') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      @endif --}}
+      @endif
         <div class="row mt-4">
           <div class="col-12">
             <div class="card">
@@ -50,10 +57,10 @@
                     <td>{{ $item->address }}</td>
 
                     <td>
-                        <a href="">
+                        <a href="{{ route('user#edit', $item->id) }}">
                             <button class="btn btn-sm bg-primary text-white">Edit</button>
                         </a>
-                        <a href="">
+                        <a href="{{ route('user#delete', $item->id) }}">
                             <button class="btn btn-sm bg-danger text-white">Delete</button>
                         </a>
                     </td>

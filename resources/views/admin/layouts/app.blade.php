@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pizza Order System</title>
+  <title>Car Parking Booking</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -41,7 +41,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('user#list') }}" class="nav-link">
                 <i class="fa-solid fa-user"></i>
               <p>
                 Users
@@ -50,7 +50,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('services#list') }}" class="nav-link">
                 <i class="fa-solid fa-car"></i>
               <p>
                 Services

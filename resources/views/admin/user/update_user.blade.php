@@ -32,28 +32,28 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Email</label>
+                            <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
                               <input type="email" class="form-control" placeholder="Email" name="email" value="{{ $user->email }}">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Phone</label>
+                            <label for="inputPhone" class="col-sm-3 col-form-label">Phone</label>
                             <div class="col-sm-9">
                               <input type="number" class="form-control" placeholder="Phone" name="phone" value="{{ $user->phone}}">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Address</label>
+                            <label for="inputAddress" class="col-sm-3 col-form-label">Address</label>
                             <div class="col-sm-9">
                               <textarea name="address" cols="30" rows="5" placeholder="Address">{{ $user->address }}</textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">User Level</label>
+                            <label for="inputrole" class="col-sm-3 col-form-label">User Level</label>
                             <div class="col-sm-9">
                               <input type="test" class="form-control" placeholder="User Level" name="role" value="{{ $user->role }}">
                             </div>

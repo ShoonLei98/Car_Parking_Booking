@@ -32,14 +32,14 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title mt-1">
-                    <a href="{{ route('customer#add') }}"><button class="btn btn-sm btn-outline-dark"> Add User </button></a>
+                    <a href="{{ route('customer#list') }}"><button class="btn btn-sm btn-outline-dark"> Add Booking</button></a>
                 </h3>
 
                 <div class="card-tools mt-2">
-                    <form action="{{ route('customer#search') }}" method="get">
+                    <form action="" method="get">
                         @csrf
                         <div class="input-group input-group-sm bg-gray me-5" style="width: 200px;">
-                            <input type="text" name="searchCustomer" class="form-control float-right" placeholder="Enter Name or Email" value="{{ Session::get('SEARCH_CUSTOMER') }}">
+                            <input type="text" name="searchBooking" class="form-control float-right" placeholder="Enter Name or Email or CarNumber" value="">
 
                             <div class="input-group-append">
                               <button type="submit" class="btn btn-default">
@@ -57,32 +57,36 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Name</th>
+                      <th>Date</th>
+                      <th>Customer</th>
                       <th>Email</th>
-                      <th>Phone</th>
-                      <th>Address</th>
+                      <th>Car Number</th>
+                      <th>Additional Services</th>
+                      <th>Note</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
 
-                  @foreach ($customer as $item)
+                  @foreach ($booking as $item)
 
                   <tr>
-                    <td>{{ $item->customer_id }}</td>
-                    <td>{{ $item->customer_name }}</td>
+                    <td>{{ $item->booking_id }}</td>
+                    <td>{{ $item->booking_date}}</td>
+                    <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
-                    <td>{{ $item->phone }}</td>
-                    <td>{{ $item->address }}</td>
+                    <td>{{ $item->car_number }}</td>
+                    <td>{{ $item->service_id }}</td>
+                    <td>{{ $item->note }}</td>
 
                     <td>
-                        <a href="{{ route('booking#input', $item->customer_id) }}">
-                            <button class="btn btn-sm bg-warning text-black">Booking</button>
+                        <a href="">
+                            <button class="btn btn-sm bg-warning text-black">Pick Up</button>
                         </a>
-                        <a href="{{ route('customer#edit', $item->customer_id) }}">
+                        <a href="">
                             <button class="btn btn-sm bg-primary text-white">Edit</button>
                         </a>
-                        <a href="{{ route('customer#delete', $item->customer_id) }}">
+                        <a href="">
                             <button class="btn btn-sm bg-danger text-white">Delete</button>
                         </a>
                     </td>

@@ -13,11 +13,18 @@ class Booking extends Model
         'booking_id',
         'customer_id',
         'service_id',
-        'customer_email',
-        'booking_date',
-        'pick_up_date',
         'car_number',
         'duration',
         'note',
     ];
+
+    public function setCategoryAttribute($value)
+    {
+        $this->attributes['service'] = json_encode($value);
+    }
+
+    public function getCatgoryAttribute($value)
+    {
+        return json_decode($value);
+    }
 }

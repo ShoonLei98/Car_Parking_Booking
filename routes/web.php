@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AdditionalServicesController;
 
@@ -62,3 +63,9 @@ Route::prefix('customer')->group(function () {
     Route::get('deleteCustomer/{id}', [CustomerController::class, 'deleteCustomer'])->name('customer#delete');
     Route::get('searchCustomer', [CustomerController::class, 'searchCustomer'])->name('customer#search');
 });
+
+Route::prefix('booking')->group(function () {
+    Route::get('bookingList', [BookingController::class, 'bookingList'])->name('booking#list');
+    Route::get('addBooking', [BookingController::class, 'addBooking'])->name('booking#add');
+    Route::get('inputBooking/{id}', [BookingController::class, 'inputBooking'])->name('booking#input');
+    Route::post('createBooking', [BookingController::class, 'createBooking'])->name('booking#create');});

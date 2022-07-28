@@ -68,7 +68,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('booking#list') }}" class="nav-link">
               <i class="fas fa-book"></i>
               <p>
                 Booking

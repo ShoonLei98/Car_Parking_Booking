@@ -69,3 +69,7 @@ Route::prefix('booking')->group(function () {
     Route::get('addBooking', [BookingController::class, 'addBooking'])->name('booking#add');
     Route::get('inputBooking/{id}', [BookingController::class, 'inputBooking'])->name('booking#input');
     Route::post('createBooking', [BookingController::class, 'createBooking'])->name('booking#create');});
+    Route::get('editBooking/{id}', [BookingController::class, 'editBooking'])->name('booking#edit');
+    Route::post('updateBooking', [BookingController::class, 'updateBooking'])->name('booking#update');
+    Route::get('deleteBooking/{id}', [BookingController::class, 'deleteBooking'])->name('booking#delete');
+

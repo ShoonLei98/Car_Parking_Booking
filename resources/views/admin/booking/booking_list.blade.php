@@ -83,10 +83,10 @@
                         <a href="">
                             <button class="btn btn-sm bg-warning text-black">Pick Up</button>
                         </a>
-                        <a href="">
+                        <a href="{{ route('booking#edit', $item->booking_id) }}">
                             <button class="btn btn-sm bg-primary text-white">Edit</button>
                         </a>
-                        <a href="">
+                        <a href="{{ route('booking#delete', $item->booking_id) }}">
                             <button class="btn btn-sm bg-danger text-white">Delete</button>
                         </a>
                     </td>

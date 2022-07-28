@@ -17,18 +17,19 @@ class BookingController extends Controller
         $bookingData = DB::table('bookings')
                          ->select('bookings.*','customers.customer_name as name','customers.email as email')
                          ->leftjoin('customers', 'customers.customer_id', 'bookings.customer_id')
-                         ->leftjoin('services', 'bookings.service_id', 'services.service_id')
                          ->get();
 
         return view('admin.booking.booking_list')->with(['booking' => $bookingData]);
     }
 
+    // redirct booking create page from add booking in booking list
     public function addBooking()
     {
         // create booking in customer list page
         return view('admin.customer.customer_list');
     }
 
+    // redirect booking create page from booking in customer list
     public function inputBooking($id)
     {
         // get customer id to book
@@ -41,31 +42,63 @@ class BookingController extends Controller
         return view('admin.booking.create_booking')->with(['customer' => $customerID, 'service' => $serviceData]);
     }
 
+    // booking creation
     public function createBooking(Request $request)
     {
-        // dd($request->toArray());
-        // $data = $request->all();
-        // $data['service'] = json_encode($data['service']);
-        // dd($data['service']);
-
-        $data = $request->service;
-
         $customerData = $this->getBookingData($request);
-        // dd($customerData);
 
         Booking::create($customerData);
         return redirect()->route('booking#list')->with(['createSuccess' => 'Booking Created Successfully...']);
     }
 
+    public function editBooking($id)
+    {
+        $bookingData = Booking::where('booking_id', $id)->first();
+
+        // dd($bokingData);
+        $data = json_decode($bookingData->service_id);
+        $bookingData->service_id = $data;
+
+         // get services to show
+         $serviceData = Service::get();
+        return view('admin.booking.update_booking')->with(['booking' => $bookingData, 'service' => $serviceData]);
+    }
+
+    public function updateBooking(Request $request)
+    {
+        $updateData = $this->getUpdateBookingData($request);
+
+        Booking::where('booking_id', $request->bookingID)->update($updateData);
+
+        return redirect()->route('booking#list')->with(['updateSuccess' => 'Booking Updated Successfully...']);
+    }
+
+    public function deleteBooking($id)
+    {
+        Booking::where('booking_id', $id)->delete();
+        return back()->with(['deleteSuccess' => 'Booking Deleted Successfully...']);
+    }
+
     protected function getBookingData(Request $request)
     {
-        $data = implode(',' , $request->service);
+        // $data = implode(',' , $request->service);
         // dd($data);
         return [
             'customer_id' => $request->customerID,
-            // 'service_id' => $request->service,
-            'service_id' => $data,
+            'service_id' => json_encode($request->service),
             'booking_date' => Carbon::now()->format('d M Y'),
+            'car_number' => $request->carNo,
+            'duration' => 1,
+            'note' => $request->note,
+        ];
+    }
+
+    protected function getUpdateBookingData(Request $request)
+    {
+        return [
+            'customer_id' => $request->customerID,
+            'service_id' => json_encode($request->service),
+            'booking_date' => $request->bookingDate,
             'car_number' => $request->carNo,
             'duration' => 1,
             'note' => $request->note,

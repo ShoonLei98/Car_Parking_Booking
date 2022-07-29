@@ -15,37 +15,37 @@
                 <div class="card-body">
                   <div class="tab-content">
                     <div class="active tab-pane" id="activity">
-                      <form class="form-horizontal">
-                          @csrf
-                        <div class="form-group row">
-                          <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="Name" name="name" >
+                        <form class="form-horizontal" action="" method="post">
+                            @csrf
+
+                          <div class="">
+                            <h5>
+                              <small>Name : </small>
+                              <small>{{ $user->name }}<small><br>
+                            <h5>
                           </div>
-                        </div>
 
-                        <div class="form-group row">
-                          <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" placeholder="Email" name="email">
+                          <div class="">
+                              <h5>
+                                <small>Email : </small>
+                                <small>{{ $user->email }}<small><br>
+                              <h5>
                           </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control"  placeholder="Phone Number" name="phone">
-                            </div>
-                        </div>
+                          <div class="">
+                              <h5>
+                                <small>Phone : </small>
+                                <small>{{ $user->phone }}<small><br>
+                              <h5>
+                          </div>
 
-                        <div class="form-group row">
-                            <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" placeholder="Address" name="address">
-                            </div>
-                        </div>
-
-                      </form>
+                          <div class="">
+                              <h5>
+                                <small>Address : </small>
+                                <small>{{ $user->address }}<small><br>
+                              <h5>
+                          </div>
+                        </form>
                     </div>
                     </div>
                   </div>

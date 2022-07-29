@@ -26,7 +26,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
-                    <button class="btn btn-sm btn-outline-dark">User List</button>
+                    <button class="btn btn-sm btn-outline-dark disabled">User List</button>
                 </h3>
               </div>
               <!-- /.card-header -->

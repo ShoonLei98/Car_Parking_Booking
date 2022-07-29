@@ -43,7 +43,6 @@
                 <table class="table table-hover text-nowrap text-center">
                   <thead>
                     <tr>
-                      <th>ID</th>
                       <th>Services</th>
                       <th>Price</th>
                       <th></th>
@@ -54,7 +53,6 @@
                   @foreach ($service as $item)
 
                   <tr>
-                    <td>{{ $item->service_id }}</td>
                     <td>{{ $item->service_name }}</td>
                     <td>{{ $item->service_price}}</td>
 

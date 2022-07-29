@@ -24,6 +24,7 @@ class AdditionalServicesController extends Controller
     public function createService(Request $request)
     {
         $service = [
+            'service_id' => $request->additionalService,
             'service_name' => $request->additionalService,
             'service_price' => $request->price
         ];
@@ -43,6 +44,7 @@ class AdditionalServicesController extends Controller
     public function updateService(Request $request)
     {
         $service = [
+            'service_id' => $request->additionalService,
             'service_name' => $request->additionalService,
             'service_price' => $request->price
         ];

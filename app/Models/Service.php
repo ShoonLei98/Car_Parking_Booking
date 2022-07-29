@@ -9,6 +9,9 @@ class Service extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'service_id';
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = [
         'service_id',
         'service_name',

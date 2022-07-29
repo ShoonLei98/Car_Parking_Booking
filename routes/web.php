@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
@@ -68,8 +69,10 @@ Route::prefix('booking')->group(function () {
     Route::get('bookingList', [BookingController::class, 'bookingList'])->name('booking#list');
     Route::get('addBooking', [BookingController::class, 'addBooking'])->name('booking#add');
     Route::get('inputBooking/{id}', [BookingController::class, 'inputBooking'])->name('booking#input');
-    Route::post('createBooking', [BookingController::class, 'createBooking'])->name('booking#create');});
+    Route::post('createBooking', [BookingController::class, 'createBooking'])->name('booking#create');
     Route::get('editBooking/{id}', [BookingController::class, 'editBooking'])->name('booking#edit');
     Route::post('updateBooking', [BookingController::class, 'updateBooking'])->name('booking#update');
     Route::get('deleteBooking/{id}', [BookingController::class, 'deleteBooking'])->name('booking#delete');
+    Route::get('pickup/{id}', [BookingController::class, 'pickupBooking'])->name('booking#pickup');
+});
 

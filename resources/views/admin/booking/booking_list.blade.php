@@ -80,7 +80,7 @@
                     <td>{{ $item->note }}</td>
 
                     <td>
-                        <a href="">
+                        <a href="{{ route('booking#pickup', $item->booking_id) }}">
                             <button class="btn btn-sm bg-warning text-black">Pick Up</button>
                         </a>
                         <a href="{{ route('booking#edit', $item->booking_id) }}">

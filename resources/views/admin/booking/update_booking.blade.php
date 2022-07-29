@@ -36,7 +36,6 @@
                                 <select class="form-control" name="service[]" multiple="multiple">
 
                                     @foreach ($service as $item)
-
                                         @for ($i = 0; $i < count($booking->service_id); $i++)
                                         {
                                             @if ($booking->service_id[$i] == $item->service_id)
@@ -46,9 +45,8 @@
                                         @endfor
 
                                         <option value="{{  $item->service_id }}">{{ $item->service_name }}</option>
-
-
                                     @endforeach
+
                                 </select>
                             </div>
                         </div>

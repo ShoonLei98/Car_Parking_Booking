@@ -79,6 +79,18 @@ class BookingController extends Controller
         return back()->with(['deleteSuccess' => 'Booking Deleted Successfully...']);
     }
 
+    public function pickupBooking($id)
+    {
+        $data = DB::table('bookings')
+                         ->select('bookings.*','customers.customer_name as name','customers.email as email')
+                         ->leftjoin('customers', 'customers.customer_id', 'bookings.customer_id')
+                         ->where('booking_id' , $id)
+                         ->first();
+                        //  dd($data);
+        // return redirect()->route('booking#pickup')->with(['pickup' => $data]);
+        return view('admin.booking.pickup')->with(['pickup' => $data]);
+    }
+
     protected function getBookingData(Request $request)
     {
         // $data = implode(',' , $request->service);
